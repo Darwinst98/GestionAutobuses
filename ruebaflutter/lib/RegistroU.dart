@@ -111,7 +111,7 @@ class ProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Text(
-        'Página de perfil',
+        'Página de Perfil',
         style: TextStyle(fontSize: 24),
       ),
     );
