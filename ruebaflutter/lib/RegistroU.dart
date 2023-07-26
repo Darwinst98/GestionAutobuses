@@ -109,7 +109,7 @@ class FavoritesScreen extends StatelessWidget {
 class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Center(
+    return Center (
       child: Text(
         'Página de Perfil',
         style: TextStyle(fontSize: 24),
