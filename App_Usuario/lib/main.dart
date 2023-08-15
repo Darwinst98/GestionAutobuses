@@ -37,9 +37,12 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Bienvenido Inicio',style: TextStyle(
-      color: Colors.black, // Cambia el color del texto del título a rojo
-    ),),
+        title: Text(
+          'Bienvenido Inicio',
+          style: TextStyle(
+            color: Colors.black, // Cambia el color del texto del título a rojo
+          ),
+        ),
         centerTitle: true,
         backgroundColor: Colors.white,
       ),
@@ -55,8 +58,10 @@ class _MyHomePageState extends State<MyHomePage> {
               _currentIndex = index;
             });
           },
-          selectedItemColor: Colors.green, // Cambia el color de los íconos a blanco
-          unselectedItemColor: Colors.black, // Cambia el color de los íconos no seleccionados a blanco
+          selectedItemColor:
+              Colors.green, // Cambia el color de los íconos a blanco
+          unselectedItemColor: Colors
+              .black, // Cambia el color de los íconos no seleccionados a blanco
           items: [
             BottomNavigationBarItem(
               icon: Icon(Icons.home),
@@ -80,8 +85,6 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
-
-
 
 class HomeScreen extends StatelessWidget {
   @override
