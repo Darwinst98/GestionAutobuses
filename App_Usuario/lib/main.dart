@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'inicio.dart';
+import 'horarios.dart';
 
 void main() {
   runApp(MyApp());
@@ -9,7 +10,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Barra de Navegación',
+      debugShowCheckedModeBanner: false,
+      title: 'Barra de Búsqueda y Navegación',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
@@ -29,8 +31,8 @@ class _MyHomePageState extends State<MyHomePage> {
   final List<Widget> _screens = [
     InicioScreen(),
     RoutesScreen(),
-    ScheduleScreen(),
-    LocationScreen()
+    HorariosScreen(),
+    LocationScreen(),
   ];
 
   @override
@@ -40,11 +42,25 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(
           'Bienvenido Inicio',
           style: TextStyle(
-            color: Colors.black, // Cambia el color del texto del título a rojo
+            color: Colors.black, // Cambia el color del texto del título a negro
           ),
         ),
         centerTitle: true,
         backgroundColor: Colors.white,
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(
+              Icons.search,
+              color: Colors.green,
+            ),
+            onPressed: () {
+              showSearch(
+                context: context,
+                delegate: SearchBarDelegate(),
+              );
+            },
+          ),
+        ],
       ),
       body: _screens[_currentIndex],
       bottomNavigationBar: Container(
@@ -58,8 +74,8 @@ class _MyHomePageState extends State<MyHomePage> {
               _currentIndex = index;
             });
           },
-          selectedItemColor:
-              Colors.green, // Cambia el color de los íconos a blanco
+          selectedItemColor: Colors
+              .green, // Cambia el color de los íconos seleccionados a verde
           unselectedItemColor: Colors
               .black, // Cambia el color de los íconos no seleccionados a blanco
           items: [
@@ -86,14 +102,42 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 }
 
-class HomeScreen extends StatelessWidget {
+class SearchBarDelegate extends SearchDelegate<String> {
   @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Text(
-        'Página de Inicio',
-        style: TextStyle(fontSize: 24),
+  List<Widget> buildActions(BuildContext context) {
+    return [
+      IconButton(
+        icon: Icon(Icons.clear),
+        onPressed: () {
+          query = '';
+        },
       ),
+    ];
+  }
+
+  @override
+  Widget buildLeading(BuildContext context) {
+    return IconButton(
+      icon: Icon(Icons.arrow_back),
+      onPressed: () {
+        close(context, '');
+      },
+    );
+  }
+
+  @override
+  Widget buildResults(BuildContext context) {
+    // Implementa la lógica para mostrar los resultados de búsqueda
+    return Center(
+      child: Text('Resultados de la búsqueda para "$query"'),
+    );
+  }
+
+  @override
+  Widget buildSuggestions(BuildContext context) {
+    // Implementa la lógica para mostrar sugerencias mientras el usuario escribe
+    return Center(
+      child: Text('Escribe la ruta deseada'),
     );
   }
 }
@@ -104,18 +148,6 @@ class RoutesScreen extends StatelessWidget {
     return Center(
       child: Text(
         'Página de Rutas',
-        style: TextStyle(fontSize: 24),
-      ),
-    );
-  }
-}
-
-class ScheduleScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Text(
-        'Página de Horarios',
         style: TextStyle(fontSize: 24),
       ),
     );
