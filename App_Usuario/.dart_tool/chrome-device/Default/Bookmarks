@@ -1,0 +1,50 @@
+{
+   "checksum": "88f4730ee292c3d54b9e7e5ef01cf2e8",
+   "roots": {
+      "bookmark_bar": {
+         "children": [ {
+            "date_added": "13322757054453616",
+            "date_last_used": "0",
+            "guid": "acd47a02-3542-4675-aa2d-c5ab5b31c231",
+            "id": "6",
+            "name": "CONSTRUCCION UNIDO.pdf",
+            "show_icon": false,
+            "source": "sync",
+            "type": "url",
+            "url": "file:///C:/Users/DELL/Downloads/CONSTRUCCION%20UNIDO.pdf"
+         } ],
+         "date_added": "13335928532181708",
+         "date_last_used": "0",
+         "date_modified": "13322757054453616",
+         "guid": "0bc5d13f-2cba-5d74-951f-3f233fe6c908",
+         "id": "1",
+         "name": "Barra de favoritos",
+         "source": "unknown",
+         "type": "folder"
+      },
+      "other": {
+         "children": [  ],
+         "date_added": "13335928532181710",
+         "date_last_used": "0",
+         "date_modified": "0",
+         "guid": "82b081ec-3dd3-529c-8475-ab6c344590dd",
+         "id": "2",
+         "name": "Otros favoritos",
+         "source": "unknown",
+         "type": "folder"
+      },
+      "synced": {
+         "children": [  ],
+         "date_added": "13335928532181714",
+         "date_last_used": "0",
+         "date_modified": "0",
+         "guid": "4cf2e351-0e85-532b-bb37-df045d8f8d0f",
+         "id": "3",
+         "name": "Favoritos móviles",
+         "source": "unknown",
+         "type": "folder"
+      }
+   },
+   "sync_metadata": "CkEKHgiIgQISCA69jdKJAQAAKg4QABgBIAAoBjAAOABAABIAIAEqGE1GQjhzNjBZbk5jT0JlTWFXWm9FS1E9PaAGDBKJAQgBEoQBChx5eEovNmZ2a2VjcjdrcDVFUXpCNHRXTHBkYkU9EiRhMjIxM2ExNC1lNWY5LTVjYTktYmU1YS04MjI0MzI1MDA4MjgYACAAKAAwuZz08bAwOLW/wM2CMEC1v8DNgjBKHGFSQ1dMZ2hGOWI1SW5xS0lEdnVKL2p2UWtGYz1aAGUAAAAAEqcBCAYSogEKHHFiNkg4K3B1dzlDamdjTlJ5eURWSDJPQlptaz0SJGFjZDQ3YTAyLTM1NDItNDY3NS1hYTJkLWM1YWI1YjMxYzIzMRgAIAAoADCYj/WL7DA4s4/1i+wwQLOP9YvsMEocNnU3SUJaYWw0MXltU0kwV01pcG9SQWNOeUZ3PVoeIhx0clduT0gvOWhKd0hrWnV2VWpPVCtXWEpOVU09ZXdwbKMSiQEIAhKEAQocWWNTVG9udkVTUHdxQ3M0TDJjclZodjY4TDk4PRIkNGM4MTFjZjctOTYwYy01NzZiLTkzZTQtZDA4YjRlZDU0NmZlGAAgACgAMLmc9PGwMDj3vsDNgjBA977AzYIwShxvUFZraHdCUmJWNjVLQ1dSMitJT05IV29PdTg9WgBlAAAAABKJAQgDEoQBChxuamdEdTg4ZUNydlhwODZwRDdmSEdjcUZwODg9EiQ1MjU0ZDdkYy1mYTY2LTViOTMtOTUxZi1kMDhmNjdiOTBmMDAYACAAKAAwuZz08bAwOJa/wM2CMECWv8DNgjBKHHl6TkIwMWNuNTRBN2NSVTB1VCsvUGdtVHRVbz1aAGUAAAAAMAA4AA==",
+   "version": 1
+}
