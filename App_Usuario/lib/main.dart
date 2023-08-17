@@ -32,7 +32,11 @@ class _MyHomePageState extends State<MyHomePage> {
     InicioScreen(),
     RoutesScreen(),
     HorariosScreen(),
+<<<<<<< HEAD
    LocationScreen(),
+=======
+    LocationScreen(),
+>>>>>>> 67e0f0afa8178f82c8e4e2148c1436b3a4a27f61
   ];
 
   @override
@@ -49,7 +53,14 @@ class _MyHomePageState extends State<MyHomePage> {
         backgroundColor: Colors.white,
         actions: <Widget>[
           IconButton(
+<<<<<<< HEAD
             icon: Icon(Icons.search,color: Colors.green,),
+=======
+            icon: Icon(
+              Icons.search,
+              color: Colors.green,
+            ),
+>>>>>>> 67e0f0afa8178f82c8e4e2148c1436b3a4a27f61
             onPressed: () {
               showSearch(
                 context: context,
@@ -71,8 +82,15 @@ class _MyHomePageState extends State<MyHomePage> {
               _currentIndex = index;
             });
           },
+<<<<<<< HEAD
           selectedItemColor: Colors.green, // Cambia el color de los íconos seleccionados a verde
           unselectedItemColor: Colors.black, // Cambia el color de los íconos no seleccionados a blanco
+=======
+          selectedItemColor: Colors
+              .green, // Cambia el color de los íconos seleccionados a verde
+          unselectedItemColor: Colors
+              .black, // Cambia el color de los íconos no seleccionados a blanco
+>>>>>>> 67e0f0afa8178f82c8e4e2148c1436b3a4a27f61
           items: [
             BottomNavigationBarItem(
               icon: Icon(Icons.home),
@@ -148,6 +166,10 @@ class RoutesScreen extends StatelessWidget {
     );
   }
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 67e0f0afa8178f82c8e4e2148c1436b3a4a27f61
 class LocationScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
