@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'dart:developer' as developer;
+import 'inicio_admin.dart';
 
 void main() {
   runApp(MyApp());
@@ -11,6 +12,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Admin',
       theme: ThemeData(
         primarySwatch: Colors.blue,
@@ -44,7 +46,7 @@ final queryParams = {"key": "AIzaSyDJlraDBdCtcpWYEmj-yXCc00Gh0xiGJCk"};
       developer.log(decodedResp.toString());
   if (decodedResp.containsKey("idToken")) {
       Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (context) => MyApp()), 
+        MaterialPageRoute(builder: (context) => InicioAdminScreen()), 
       );
   }
 }
@@ -54,8 +56,7 @@ void _register() async {
   final Map<String, String> _headers = {"content-type": "application/json"};
   var user = {
         "email":  _emailController.text,
-        "password":  _passwordController.text,
-        "role": 'admin'
+        "password":  _passwordController.text
       };
     var response =
           await http.post(uri, headers: _headers, body:  json.encode(user));
@@ -64,7 +65,7 @@ void _register() async {
     final responseData = json.decode(response.body);
     if (responseData['status'] == 'Success') {
       Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (context) => MyApp()), 
+        MaterialPageRoute(builder: (context) => InicioAdminScreen()), 
       );
     }
   }
