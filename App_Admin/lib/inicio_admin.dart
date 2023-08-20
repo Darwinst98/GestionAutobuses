@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'acciones.dart';
+import 'horarios.dart';
 
 class InicioAdminScreen extends StatelessWidget {
   @override
@@ -52,7 +53,7 @@ class Navigation extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => AdminCrudScreen(title: 'Horarios'),
+                  builder: (context) => HorariosScreen(),
                 ),
               );
             },

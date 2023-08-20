@@ -16,39 +16,74 @@ class AdminCrudScreen extends StatefulWidget {
 }
 
 class _AdminCrudScreenState extends State<AdminCrudScreen> {
+  final FlotaService _flotaService = FlotaService();
+  late List<Flota> _flotas = [];
+
+  @override
+  void initState() {
+    super.initState();
+    _getFlotas();
+  }
+
+  void _getFlotas() async {
+    List<Flota>? flotas = await _flotaService.getFlotas();
+    if (flotas != null) {
+      setState(() {
+        _flotas = flotas;
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('Administrar ${widget.title}'),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            IconButton(
-              onPressed: () {
-                _navigateToEditScreen(context);
-              },
-              icon: Icon(Icons.add),
-              tooltip: 'Agregar ${widget.title}',
-            ),
-            IconButton(
-              onPressed: () {
-                // Lógica para editar
-              },
-              icon: Icon(Icons.edit),
-              tooltip: 'Editar ${widget.title}',
-            ),
-            IconButton(
-              onPressed: () {
-                // Lógica para eliminar
-              },
-              icon: Icon(Icons.delete),
-              tooltip: 'Eliminar ${widget.title}',
-            ),
-          ],
+      body: RefreshIndicator(
+        onRefresh: () async {
+          _getFlotas();
+        },
+        child: ListView.builder(
+          itemCount: _flotas.length,
+          itemBuilder: (context, index) {
+            return ListTile(
+              title: Text(_flotas[index].nomCoperativa ?? ''),
+              subtitle: Text(_flotas[index].descripcion ?? ''),
+              trailing: PopupMenuButton<String>(
+                onSelected: (value) {
+                  if (value == 'editar') {
+                    // Lógica para editar la flota
+                  } else if (value == 'eliminar') {
+                    // Lógica para eliminar la flota
+                  }
+                },
+                itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
+                  const PopupMenuItem<String>(
+                    value: 'editar',
+                    child: ListTile(
+                      leading: Icon(Icons.edit),
+                      title: Text('Editar'),
+                    ),
+                  ),
+                  const PopupMenuItem<String>(
+                    value: 'eliminar',
+                    child: ListTile(
+                      leading: Icon(Icons.delete),
+                      title: Text('Eliminar'),
+                    ),
+                  ),
+                ],
+              ),
+            );
+          },
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          _navigateToEditScreen(context);
+        },
+        child: Icon(Icons.add),
       ),
     );
   }
@@ -59,7 +94,10 @@ class _AdminCrudScreenState extends State<AdminCrudScreen> {
       MaterialPageRoute(
         builder: (context) => EditScreen(),
       ),
-    );
+    ).then((_) {
+      // Refresh the list when returning from EditScreen
+      _getFlotas();
+    });
   }
 }
 
@@ -69,21 +107,18 @@ class EditScreen extends StatefulWidget {
 }
 
 class _EditScreenState extends State<EditScreen> {
-  final FlotaService _flotaservice = FlotaService();
+  final FlotaService _flotaService = FlotaService();
   late Flota _flota;
-
-  // Declaración de variables para nombre y descripción
   String _nombre = '';
   String _descripcion = '';
+  File? _selectedImage;
+  final picker = ImagePicker();
 
   @override
   void initState() {
     super.initState();
-    _flota = Flota.created();
+    _flota = Flota();
   }
-
-  File? _selectedImage;
-  final picker = ImagePicker();
 
   Future<void> _pickImage() async {
     final pickedImage = await picker.pickImage(source: ImageSource.gallery);
@@ -132,14 +167,12 @@ class _EditScreenState extends State<EditScreen> {
             ElevatedButton(
               onPressed: () async {
                 if (_selectedImage != null) {
-                  _flota.imagen = await _flotaservice.uploadImage(_selectedImage!);
+                  _flota.imagen =
+                      await _flotaService.uploadImage(_selectedImage!);
                 }
-
-                // Asigna los valores de nombre y descripción a la instancia de Flota
                 _flota.descripcion = _descripcion;
                 _flota.nomCoperativa = _nombre;
-
-                int estado = await _flotaservice.postFlota(_flota);
+                int estado = await _flotaService.postFlota(_flota);
                 developer.log("Estoy guardando $estado");
                 if (estado == 201) {
                   final snackBar = SnackBar(
@@ -152,20 +185,6 @@ class _EditScreenState extends State<EditScreen> {
             ),
           ],
         ),
-      ),
-    );
-  }
-}
-
-class HorariosScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Horarios'),
-      ),
-      body: Center(
-        child: Text('Contenido de la pantalla de horarios'),
       ),
     );
   }

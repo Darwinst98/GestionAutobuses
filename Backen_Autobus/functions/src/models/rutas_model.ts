@@ -5,17 +5,21 @@ export interface Ruta {
     ruta :string,
     idFlota :string,
     imagen: string,
+    destino: string,
+    imagenDestino: string
     
 }
 
 export function Ruta(data :any, id?:string){
-    const { ruta, idFlota, imagen } = data;
+    const { ruta, idFlota, imagen, destino, imagenDestino } = data;
 
     let object :Ruta = { 
         idRuta: id,                
         ruta :ruta,
         idFlota: idFlota,
-        imagen: imagen
+        imagen: imagen,
+        destino: destino,
+        imagenDestino: imagenDestino
     };
     return object;
 }

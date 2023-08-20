@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'destinos.dart';
 import 'inicio.dart';
 import 'horarios.dart';
 
@@ -29,38 +30,24 @@ class _MyHomePageState extends State<MyHomePage> {
   int _currentIndex = 0;
 
   final List<Widget> _screens = [
+    DestinoScreen(),
     InicioScreen(),
-    RoutesScreen(),
     HorariosScreen(),
-<<<<<<< HEAD
-   LocationScreen(),
-=======
     LocationScreen(),
->>>>>>> 67e0f0afa8178f82c8e4e2148c1436b3a4a27f61
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          'Bienvenido Inicio',
-          style: TextStyle(
-            color: Colors.black, // Cambia el color del texto del título a negro
-          ),
-        ),
         centerTitle: true,
         backgroundColor: Colors.white,
         actions: <Widget>[
           IconButton(
-<<<<<<< HEAD
-            icon: Icon(Icons.search,color: Colors.green,),
-=======
             icon: Icon(
               Icons.search,
               color: Colors.green,
             ),
->>>>>>> 67e0f0afa8178f82c8e4e2148c1436b3a4a27f61
             onPressed: () {
               showSearch(
                 context: context,
@@ -82,15 +69,10 @@ class _MyHomePageState extends State<MyHomePage> {
               _currentIndex = index;
             });
           },
-<<<<<<< HEAD
-          selectedItemColor: Colors.green, // Cambia el color de los íconos seleccionados a verde
-          unselectedItemColor: Colors.black, // Cambia el color de los íconos no seleccionados a blanco
-=======
           selectedItemColor: Colors
               .green, // Cambia el color de los íconos seleccionados a verde
           unselectedItemColor: Colors
               .black, // Cambia el color de los íconos no seleccionados a blanco
->>>>>>> 67e0f0afa8178f82c8e4e2148c1436b3a4a27f61
           items: [
             BottomNavigationBarItem(
               icon: Icon(Icons.home),
@@ -98,7 +80,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.map),
-              label: 'Rutas',
+              label: 'Cooperativas',
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.schedule),
@@ -106,7 +88,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.location_on),
-              label: 'Localización',
+              label: 'Mi Sitio',
             ),
           ],
         ),
@@ -166,10 +148,7 @@ class RoutesScreen extends StatelessWidget {
     );
   }
 }
-<<<<<<< HEAD
-=======
 
->>>>>>> 67e0f0afa8178f82c8e4e2148c1436b3a4a27f61
 class LocationScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

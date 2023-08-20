@@ -21,6 +21,7 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
 class LoginScreen extends StatefulWidget {
   @override
   _LoginScreenState createState() => _LoginScreenState();
@@ -31,46 +32,46 @@ class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController _passwordController = TextEditingController();
 
   void _login() async {
-     final loginBody = {
-        "email":  _emailController.text,
-        "password": _passwordController.text,
-        "returnSecureToken": true
-      };
+    final loginBody = {
+      "email": _emailController.text,
+      "password": _passwordController.text,
+      "returnSecureToken": true
+    };
 
-final queryParams = {"key": "AIzaSyDJlraDBdCtcpWYEmj-yXCc00Gh0xiGJCk"};
- var uri = Uri.https("www.googleapis.com",
-          "/identitytoolkit/v3/relyingparty/verifyPassword", queryParams);
-  var response = await http.post(uri, body: json.encode(loginBody));
- if (response.body.isEmpty)  developer.log("Error. Al iniciar sesion");
-      Map<String, dynamic> decodedResp = json.decode(response.body);
-      developer.log(decodedResp.toString());
-  if (decodedResp.containsKey("idToken")) {
+    final queryParams = {"key": "AIzaSyDJlraDBdCtcpWYEmj-yXCc00Gh0xiGJCk"};
+    var uri = Uri.https("www.googleapis.com",
+        "/identitytoolkit/v3/relyingparty/verifyPassword", queryParams);
+    var response = await http.post(uri, body: json.encode(loginBody));
+    if (response.body.isEmpty) developer.log("Error. Al iniciar sesion");
+    Map<String, dynamic> decodedResp = json.decode(response.body);
+    developer.log(decodedResp.toString());
+    if (decodedResp.containsKey("idToken")) {
       Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (context) => InicioAdminScreen()), 
-      );
-  }
-}
-
-void _register() async {
-  var uri = Uri.parse("https://us-central1-app-autobus.cloudfunctions.net/api/registro");
-  final Map<String, String> _headers = {"content-type": "application/json"};
-  var user = {
-        "email":  _emailController.text,
-        "password":  _passwordController.text
-      };
-    var response =
-          await http.post(uri, headers: _headers, body:  json.encode(user));
-  developer.log(response.body);
-  if (response.statusCode == 200) {
-    final responseData = json.decode(response.body);
-    if (responseData['status'] == 'Success') {
-      Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (context) => InicioAdminScreen()), 
+        MaterialPageRoute(builder: (context) => InicioAdminScreen()),
       );
     }
   }
-}
 
+  void _register() async {
+    var uri = Uri.parse(
+        "https://us-central1-app-autobus.cloudfunctions.net/api/registro");
+    final Map<String, String> _headers = {"content-type": "application/json"};
+    var user = {
+      "email": _emailController.text,
+      "password": _passwordController.text
+    };
+    var response =
+        await http.post(uri, headers: _headers, body: json.encode(user));
+    developer.log(response.body);
+    if (response.statusCode == 200) {
+      final responseData = json.decode(response.body);
+      if (responseData['status'] == 'Success') {
+        Navigator.of(context).pushReplacement(
+          MaterialPageRoute(builder: (context) => InicioAdminScreen()),
+        );
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
